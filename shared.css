@@ -168,8 +168,8 @@
   
   /* Universal Form Styles (Login, Registration, etc.) */
   form {
-    max-width: 500px;            
-    margin: 0 auto;              
+    max-width: 500px;              /* unify form widths */
+    margin: 0 auto;                /* center the form */
     background: white;
     padding: 30px;
     border-radius: 8px;
