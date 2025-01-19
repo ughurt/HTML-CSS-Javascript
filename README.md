@@ -133,10 +133,6 @@ We welcome contributions to HealthConnect! To contribute, follow these steps:
 
 Please make sure to follow the coding standards and add tests for any new features or changes you introduce.
 
-## License
-
-HealthConnect is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
-For any inquiries or issues, please contact us at [email@example.com].
+For any inquiries or issues, please contact us at [talibliugur067@.com].
