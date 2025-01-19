@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monthly Health Tracker - HealthConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: #1ABC9C;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #16A085;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover {
+      background-color: #149174;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
+    }
+    .sidebar {
+      flex: 0 0 250px;
+      background-color: #2C3E50;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #1ABC9C;
+      padding-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .sidebar ul li a:hover {
+      color: #1ABC9C;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .main-content h1 {
+      font-size: 2.2rem;
+      color: #1ABC9C;
+      margin-bottom: 20px;
+    }
+    .main-content section {
+      margin-bottom: 40px;
+    }
+    .main-content section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2C3E50;
+      border-bottom: 2px solid #1ABC9C;
+      padding-bottom: 10px;
+    }
+    .main-content section p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-group button {
+      background-color: #1ABC9C;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .form-group button:hover {
+      background-color: #149174;
+    }
+
+    /* Chart Section */
+    .chart-container {
+      margin-top: 30px;
+      max-width: 700px;
+      margin: 30px auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2C3E50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-top: 5px solid #1ABC9C;
+    }
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer ul li a:hover {
+      color: #1ABC9C;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">HealthConnect</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="healthy_lifestyle.html">Healthy Lifestyle</a></li>
+          <li><a href="login.html">Log In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#health-monitoring">Health Monitoring</a></li>
+        <li><a href="#interactive-features">Interactive Features</a></li>
+        <li><a href="#progress">Progress Charts</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>Monthly Health Tracker</h1>
+
+      <section id="health-monitoring">
+        <h2>Daily Health Tracking</h2>
+        <form id="trackingForm">
+          <div class="form-group">
+            <label for="dateInput">Date:</label>
+            <input type="date" id="dateInput" required />
+          </div>
+          <div class="form-group">
+            <label for="sleepInput">Sleep Hours:</label>
+            <input type="number" id="sleepInput" step="0.1" placeholder="Enter sleep hours" required />
+          </div>
+          <div class="form-group">
+            <label for="caloriesInput">Calories Burned:</label>
+            <input type="number" id="caloriesInput" placeholder="Enter calories burned" required />
+          </div>
+          <div class="form-group">
+            <label for="stepsInput">Steps Taken:</label>
+            <input type="number" id="stepsInput" placeholder="Enter steps taken" required />
+          </div>
+          <div class="form-group">
+            <button type="submit">Add Data</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="progress">
+        <h2>Progress Charts</h2>
+        <div class="chart-container">
+          <canvas id="sleepChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="caloriesChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="stepsChart"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p>&copy; 2025 HealthConnect. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const sleepData = [];
+    const caloriesData = [];
+    const stepsData = [];
+
+    const updateCharts = () => {
+      sleepChart.data.labels = sleepData.map((_, index) => `Day ${index + 1}`);
+      sleepChart.data.datasets[0].data = sleepData;
+      sleepChart.update();
+
+      caloriesChart.data.labels = caloriesData.map((_, index) => `Day ${index + 1}`);
+      caloriesChart.data.datasets[0].data = caloriesData;
+      caloriesChart.update();
+
+      stepsChart.data.labels = stepsData.map((_, index) => `Day ${index + 1}`);
+      stepsChart.data.datasets[0].data = stepsData;
+      stepsChart.update();
+    };
+
+    document.getElementById('trackingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const sleepHours = parseFloat(document.getElementById('sleepInput').value);
+      const calories = parseInt(document.getElementById('caloriesInput').value);
+      const steps = parseInt(document.getElementById('stepsInput').value);
+
+      sleepData.push(sleepHours);
+      caloriesData.push(calories);
+      stepsData.push(steps);
+
+      updateCharts();
+      e.target.reset();
+    });
+
+    const sleepCtx = document.getElementById('sleepChart').getContext('2d');
+    const sleepChart = new Chart(sleepCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Sleep Hours',
+          data: [],
+          borderColor: '#3498DB',
+          backgroundColor: 'rgba(52, 152, 219, 0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' }
+        }
+      }
+    });
+
+    const caloriesCtx = document.getElementById('caloriesChart').getContext('2d');
+    const caloriesChart = new Chart(caloriesCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Calories Burned',
+          data: [],
+          borderColor: '#E74C3C',
+          backgroundColor: 'rgba(231, 76, 60, 0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' }
+        }
+      }
+    });
+
+    const stepsCtx = document.getElementById('stepsChart').getContext('2d');
+    const stepsChart = new Chart(stepsCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Steps Taken',
+          data: [],
+          borderColor: '#2ECC71',
+          backgroundColor: 'rgba(46, 204, 113, 0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

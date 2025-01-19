@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile - HealthConnect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts (Optional) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* RESET & BOX SIZING */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* BODY & FONT */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #1ABC9C;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li {
+      display: inline-block;
+    }
+    nav ul li a {
+      text-decoration: none;
+      background-color: #16A085;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    nav ul li a:hover {
+      background-color: #149174;
+      transform: scale(1.05);
+    }
+
+    /* HERO (Optional, smaller) */
+    .hero {
+      position: relative;
+      min-height: 150px;
+      padding: 15px 20px;
+      background: linear-gradient(
+          rgba(26, 188, 156, 0.8),
+          rgba(22, 160, 133, 0.8)
+        );
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      border-radius: 8px;
+      margin: 0 auto 40px;
+      max-width: 1200px;
+    }
+    .hero-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* MAIN CONTENT: MY PROFILE FORM */
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .profile-container h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2C3E50;
+    }
+
+
+    .user-info {
+      margin-bottom: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .user-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #16A085;
+    }
+    .user-info p {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    /* Settings / Update Form */
+    .settings-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .settings-form input {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .settings-submit {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #1ABC9C;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+      margin-bottom: 20px;
+    }
+    .settings-submit:hover {
+      background-color: #149174;
+      transform: scale(1.02);
+    }
+
+    /* Error Message Inline */
+    .error-message {
+      color: #b71c1c;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2C3E50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    footer ul li {
+      display: inline-block;
+    }
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100px;
+        padding: 10px;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">HealthConnect</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="find_doctor.html">Find a Doctor</a></li>
+          <li><a href="join_doctor.html">Join as a Doctor</a></li>
+          <li><a href="login.html">Log In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero (Optional) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>My Profile</h1>
+      <p>Manage your personal details and update your account settings.</p>
+    </div>
+  </section>
+
+  <!-- Main: User Profile / Settings -->
+  <main>
+    <section class="profile-container">
+      <h2>Profile &amp; Settings</h2>
+
+ 
+      <div class="user-info">
+        <h3>Your Current Info</h3>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> john.doe@example.com</p>
+        <p><strong>Member Since:</strong> January 2025</p>
+   
+      </div>
+
+      <!-- Error Message for form validation -->
+      <div class="error-message" id="errorMessage"></div>
+
+      <!-- Settings Form -->
+      <form class="settings-form" id="settingsForm" action="#" method="POST">
+        <label for="newName">Update Name (Optional):</label>
+        <input
+          type="text"
+          id="newName"
+          name="newName"
+          placeholder="Enter new full name"
+        />
+
+        <label for="newEmail">Update Email (Optional):</label>
+        <input
+          type="email"
+          id="newEmail"
+          name="newEmail"
+          placeholder="Enter new email"
+        />
+
+        <label for="currentPassword">Current Password:</label>
+        <input
+          type="password"
+          id="currentPassword"
+          name="currentPassword"
+          placeholder="Enter current password"
+          required
+        />
+
+        <label for="newPassword">New Password (Optional):</label>
+        <input
+          type="password"
+          id="newPassword"
+          name="newPassword"
+          placeholder="Enter new password"
+        />
+
+        <label for="confirmNewPassword">Confirm New Password:</label>
+        <input
+          type="password"
+          id="confirmNewPassword"
+          name="confirmNewPassword"
+          placeholder="Re-enter new password"
+        />
+
+        <button class="settings-submit" type="submit">Save Changes</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p>&copy; 2025 HealthConnect. All rights reserved.</p>
+  </footer>
+
+  <!-- External JS -->
+  <script src="profile.js"></script>
+</body>
+</html>

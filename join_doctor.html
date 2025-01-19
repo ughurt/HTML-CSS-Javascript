@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Join as a Doctor - HealthConnect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* RESET & BOX SIZING */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* BODY & FONT */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #1ABC9C;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li {
+      display: inline-block;
+    }
+    nav ul li a {
+      text-decoration: none;
+      background-color: #16A085;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    nav ul li a:hover {
+      background-color: #149174;
+      transform: scale(1.05);
+    }
+
+    .hero {
+      position: relative;
+
+      min-height: 150px;
+      padding: 15px 20px;
+      background: linear-gradient(
+          rgba(26, 188, 156, 0.8),
+          rgba(22, 160, 133, 0.8)
+        ),
+        url("images/doctor_hero.jpg") no-repeat center center / cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      border-radius: 8px;
+      margin: 0 auto 40px;
+      max-width: 1200px;
+    }
+    .hero-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* MAIN CONTENT / FORM */
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    .form-container h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2C3E50;
+    }
+    .form-container label {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: block;
+      color: #333;
+    }
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    .form-container textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1ABC9C;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+    .submit-button:hover {
+      background-color: #149174;
+      transform: scale(1.02);
+    }
+
+    /* INLINE ERROR MESSAGE */
+    .error-message {
+      color: #b71c1c; /* deep red */
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      display: none; 
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #2C3E50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    footer ul li {
+      display: inline-block;
+    }
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    footer p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 100px; 
+        padding: 10px;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem; 
+      }
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">HealthConnect</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="find_doctor.html">Find a Doctor</a></li>
+          <li><a href="join_doctor.html">Join as a Doctor</a></li>
+          <li><a href="login.html">Log In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+ 
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Join Our Healthcare Network</h1>
+      <p>
+        Become part of a trusted community of healthcare professionals,
+        connecting with patients for better care.
+      </p>
+    </div>
+  </section>
+
+
+  <main>
+    <section class="form-container">
+      <h2>Doctor Registration</h2>
+      <div class="error-message" id="errorMessage"></div>
+
+      <form id="doctorForm" action="#" method="POST">
+        <label for="fullname">Full Name:</label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Enter your full name"
+          required
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <label for="specialization">Specialization:</label>
+        <select id="specialization" name="specialization" required>
+          <option value="">Select Specialization</option>
+          <option value="general">General Practitioner</option>
+          <option value="dentist">Dentist</option>
+          <option value="cardiologist">Cardiologist</option>
+          <option value="dermatologist">Dermatologist</option>
+          <option value="neurologist">Neurologist</option>
+          <option value="psychologist">Psychologist</option>
+       
+        </select>
+
+        <label for="experience">Years of Experience:</label>
+        <input
+          type="number"
+          id="experience"
+          name="experience"
+          placeholder="Enter years of experience"
+          required
+        />
+
+        <label for="bio">Short Bio:</label>
+        <textarea
+          id="bio"
+          name="bio"
+          placeholder="Tell us about your background"
+          required
+        ></textarea>
+
+        <button class="submit-button" type="submit">Join Now</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p>&copy; 2025 HealthConnect. All rights reserved.</p>
+  </footer>
+
+  <!-- External JS -->
+  <script src="join_doctor.js"></script>
+</body>
+</html>

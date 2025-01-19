@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Lifestyle - HealthConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: #1ABC9C;
+      padding: 20px 0;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #16A085;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover {
+      background-color: #149174;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
+    }
+    .sidebar {
+      flex: 0 0 250px;
+      background-color: #2C3E50;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+    }
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #1ABC9C;
+      padding-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .sidebar ul li a:hover {
+      color: #1ABC9C;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .main-content h1 {
+      font-size: 2.2rem;
+      color: #1ABC9C;
+      margin-bottom: 20px;
+    }
+    .main-content section {
+      margin-bottom: 40px;
+    }
+    .main-content section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #2C3E50;
+      border-bottom: 2px solid #1ABC9C;
+      padding-bottom: 10px;
+    }
+    .main-content section p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    /* BMI Calculator */
+    .bmi-calculator, .water-calculator {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+    }
+    .bmi-calculator input, .water-calculator input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .bmi-calculator button, .water-calculator button {
+      background-color: #1ABC9C;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .bmi-calculator button:hover, .water-calculator button:hover {
+      background-color: #149174;
+    }
+    .bmi-calculator .result, .water-calculator .result {
+      margin-top: 15px;
+      font-weight: 500;
+      color: #1ABC9C;
+    }
+
+    .redirect-button {
+      background-color: #149174;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s;
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .redirect-button:hover {
+      background-color: #1ABC9C;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2C3E50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-top: 5px solid #1ABC9C;
+    }
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer ul li a:hover {
+      color: #1ABC9C;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">HealthConnect</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="find_doctor.html">Find a Doctor</a></li>
+          <li><a href="join_doctor.html">Join as a Doctor</a></li>
+          <li><a href="healthy_lifestyle.html">Healthy Lifestyle</a></li>
+          <li><a href="login.html">Log In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Explore</h2>
+      <ul>
+        <li><a href="#nutrition">Nutrition</a></li>
+        <li><a href="#fitness">Fitness</a></li>
+        <li><a href="#obesity-info">Obesity Info</a></li>
+        <li><a href="#bmi-calculator">BMI Calculator</a></li>
+        <li><a href="#water-intake">Water Intake Calculator</a></li>
+        <li><a href="#booking">Book a Dietitian</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <h1>Healthy Lifestyle</h1>
+
+      <section id="nutrition">
+        <h2>Nutrition</h2>
+        <p>Nutrition is the foundation of a healthy lifestyle. Discover how to create a balanced diet tailored to your needs, including macronutrient distribution, meal planning tips, and how to choose wholesome ingredients. Explore healthy recipes for breakfast, lunch, and dinner, and learn effective meal prep strategies to save time while staying nourished.</p>
+      </section>
+
+      <section id="fitness">
+        <h2>Fitness</h2>
+        <p>Track your daily progress with metrics like sleep hours, calories burned, and steps taken to stay active and meet your fitness goals.</p>
+        <a href="fitness.html" class="redirect-button">Visit Monthly Tracker</a>
+      </section>
+
+      <section id="obesity-info">
+        <h2>Obesity: Facts and Awareness</h2>
+        <p>Obesity is a growing health concern worldwide, linked to conditions such as diabetes, heart disease, and joint problems. Understanding and managing weight is crucial for long-term health.</p>
+        <div class="chart-container">
+          <canvas id="obesityChart"></canvas>
+        </div>
+      </section>
+
+      <section id="bmi-calculator">
+        <h2>Body Mass Index (BMI) Calculator</h2>
+        <div class="bmi-calculator">
+          <label for="weight">Weight (kg):</label>
+          <input type="number" id="weight" placeholder="Enter your weight">
+          <label for="height">Height (cm):</label>
+          <input type="number" id="height" placeholder="Enter your height">
+          <button onclick="calculateBMI()">Calculate BMI</button>
+          <p class="result" id="bmiResult"></p>
+        </div>
+      </section>
+
+      <section id="water-intake">
+        <h2>Daily Water Intake Calculator</h2>
+        <div class="water-calculator">
+          <label for="bodyWeight">Weight (kg):</label>
+          <input type="number" id="bodyWeight" placeholder="Enter your weight">
+          <button onclick="calculateWaterIntake()">Calculate Water Intake</button>
+          <p class="result" id="waterResult"></p>
+        </div>
+      </section>
+
+      <section id="booking">
+        <h2>Book a Dietitian</h2>
+        <div class="booking-container">
+          <p>Ready to take your nutrition to the next level? Book a session with a certified dietitian today!</p>
+          <a href="find_doctor.html" class="redirect-button">Book Now</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p>&copy; 2025 HealthConnect. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('obesityChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['USA', 'UK', 'India', 'China', 'Brazil'],
+        datasets: [{
+          label: 'Obesity Rates (%)',
+          data: [36, 28, 11, 6, 22],
+          backgroundColor: ['#1ABC9C', '#16A085', '#3498DB', '#9B59B6', '#F1C40F'],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position: 'top' }
+        }
+      }
+    });
+
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      if (weight && height) {
+        const bmi = (weight / (height * height)).toFixed(2);
+        document.getElementById('bmiResult').innerText = `Your BMI is ${bmi}`;
+      } else {
+        document.getElementById('bmiResult').innerText = 'Please enter valid inputs.';
+      }
+    }
+
+    function calculateWaterIntake() {
+      const weight = parseFloat(document.getElementById('bodyWeight').value);
+      if (weight) {
+        const waterIntake = (weight * 0.033).toFixed(2);
+        document.getElementById('waterResult').innerText = `You should drink approximately ${waterIntake} liters of water daily.`;
+      } else {
+        document.getElementById('waterResult').innerText = 'Please enter your weight.';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    if (!isLoggedIn || !user) {
+      alert("Please log in to access your profile.");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("userName").textContent = user.name;
+    document.getElementById("userEmail").textContent = user.email;
+  });
+</script>
